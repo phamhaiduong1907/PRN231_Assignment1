@@ -1,0 +1,40 @@
+﻿<Window x:Class="Ass1Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ass1Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="LightBlue">
+        <StackPanel Width="365"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,0,0,10">
+                <Label Content="Email" Width="70"
+                       HorizontalContentAlignment="Center"/>
+                <TextBox Width="240"
+                         Height="30"
+                         x:Name="tbEmail"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Password"
+                       HorizontalContentAlignment="Center"
+                       Width="70"/>
+                <PasswordBox Width="240"
+                             Height="30"
+                             x:Name="pwbPassword"/>
+                <TextBox Width="240"
+                         Height="30" Visibility="Collapsed"
+                         x:Name="tbPassword"/>
+                <CheckBox VerticalContentAlignment="Center"
+                          Margin="5,0,0,0"
+                          Content="Show"
+                          Checked="CheckBox_Checked"
+                          Unchecked="CheckBox_Unchecked"/>
+            </StackPanel>
+            <Button Width="70" Height="30" Content="Login"/>
+        </StackPanel>
+    </Grid>
+</Window>
