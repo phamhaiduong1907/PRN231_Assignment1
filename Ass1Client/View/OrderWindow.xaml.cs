@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 namespace Ass1Client.View
 {
+    
     /// <summary>
     /// Interaction logic for OrderWindow.xaml
     /// </summary>

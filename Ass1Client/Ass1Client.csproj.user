@@ -22,9 +22,6 @@
     <Compile Update="View\ReportWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\SearchWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\MainWindow.xaml">
@@ -43,9 +40,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ReportWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\SearchWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

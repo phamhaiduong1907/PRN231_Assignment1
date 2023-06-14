@@ -12,3 +12,4 @@ D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Debug\net6.0\refint\Busines
 D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Debug\net6.0\BusinessObject.pdb
 D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Debug\net6.0\BusinessObject.genruntimeconfig.cache
 D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Debug\net6.0\ref\BusinessObject.dll
+D:\PRN231\Assignment1\Assignment1\BusinessObject\bin\Debug\net6.0\appsettings.json

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ass1Client.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -55,6 +56,15 @@ namespace Ass1Client
             pwbPassword.Password = tbPassword.Text;
             pwbPassword.Visibility = Visibility.Visible;
             tbPassword.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string email = tbEmail.Text;
+            string password = pwbPassword.Password.ToString();
+            ProfileWindow profileWindow = new ProfileWindow();
+            profileWindow.Show();
+            this.Hide();
         }
     }
 }

@@ -30,10 +30,8 @@ D:\PRN231\Assignment1\Assignment1\Ass1Client\bin\Debug\net6.0-windows\System.Tex
 D:\PRN231\Assignment1\Assignment1\Ass1Client\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\ProfileWindow.g.cs
 D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\ReportWindow.g.cs
-D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\SearchWindow.g.cs
 D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\ProfileWindow.baml
 D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\ReportWindow.baml
-D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\SearchWindow.baml
 D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\Ass1Client.csproj.CopyComplete
 D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\OrderDetailWindow.g.cs
 D:\PRN231\Assignment1\Assignment1\Ass1Client\obj\Debug\net6.0-windows\View\OrderWindow.g.cs

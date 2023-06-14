@@ -5,17 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ass1Client.View"
         mc:Ignorable="d"
-        Title="ProfileWindow" Height="450" Width="800">
+        Title="ProfileWindow" Width="800">
     <Grid Background="LightBlue">
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Profile" />
-                <Button Content="Product"/>
-                <Button Content="Order" />
-                <Button Content="Report" />
+                <Button Content="Profile"
+                        Foreground="White"
+                        Background="Red"
+                        Width="70" 
+                        Height="30" x:Name="btnProfileNav"/>
+                <Button Content="Order"
+                        Width="70"
+                        Height="30" x:Name="btnOrderNav" />
+                <Button Content="Product"
+                        Width="70"
+                        Height="30" x:Name="btnProductNav" />
+                <Button Content="Report"
+                        Width="70"
+                        Height="30" x:Name="btnReportNav" />
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="User Profile" Foreground="Red"
+                       FontWeight="Bold" FontSize="25"
+                       HorizontalContentAlignment="Center"/>
+                <Label Content="Email"/>
+                <TextBox x:Name="tbEmail" Width="300" Height="30"/>
+                <Label Content="Company Name" />
+                <TextBox x:Name="tbCompany"
+                         Width="300"
+                         Height="30" />
+                <Label Content="City" />
+                <TextBox x:Name="tbCity"
+                         Width="300"
+                         Height="30" />
+                <Label Content="Country" />
+                <TextBox x:Name="tbCountry"
+                         Width="300"
+                         Height="30" />
+                <Label Content="Password" />
+                <PasswordBox x:Name="pwbPassword"
+                             Width="300"
+                             Height="30" />
+                <TextBox x:Name="tbPassword"
+                         Width="300"
+                         Height="30"
+                         Visibility="Collapsed"/>
+                <CheckBox Content="Show Password"/>
+                <Button Content="Update"
+                        Width="70"
+                        Height="30"/>
+            </StackPanel>
+            <StackPanel>
+                <ListView>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Email" Width="200"/>
+                            <GridViewColumn Header="Company Name"
+                                            Width="200" />
+                            <GridViewColumn Header="City"
+                                            Width="200" />
+                            <GridViewColumn Header="Country"
+                                            Width="200" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </StackPanel>
         </StackPanel>
     </Grid>

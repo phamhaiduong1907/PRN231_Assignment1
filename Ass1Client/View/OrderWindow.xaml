@@ -5,8 +5,110 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ass1Client.View"
         mc:Ignorable="d"
-        Title="OrderWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="OrderWindow" Width="800">
+    <Grid Background="LightBlue">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Profile"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnProfileNav" />
+                <Button Content="Order"
+                        Foreground="White"
+                        Background="Red"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnOrderNav" />
+                <Button Content="Product"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnProductNav" />
+                <Button Content="Report"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnReportNav" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Label Content="Product Available"
+                       HorizontalContentAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="Red" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <TextBox Width="400"
+                             Height="30"
+                             x:Name="tbProductSearch"/>
+                    <Button Content="Search" Width="70"
+                            x:Name="btnProductSearch"/>
+                </StackPanel>
+                <ListView x:Name="lvProducts" Height="150">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Product Name"
+                                            Width="200"/>
+                            <GridViewColumn Header="Category"
+                                            Width="200" />
+                            <GridViewColumn Header="Weight"
+                                            Width="120" />
+                            <GridViewColumn Header="Unit Price"
+                                            Width="120" />
+                            <GridViewColumn Header="Available"
+                                            Width="120"/>
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Add"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Order Information"
+                       HorizontalContentAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="Red" />
+                <Label Content="No content"
+                       HorizontalContentAlignment="Center"/>
+                <StackPanel Orientation="Vertical">
+                    <ListView x:Name="lvOrderInfos"
+                              Visibility="Visible">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Product Name"
+                                                Width="600" />
+                                <GridViewColumn Header="Quantity"
+                                                Width="100" />
+                                <GridViewColumn Header="Price"
+                                                Width="100" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Total Price: "
+                               Width="700"
+                               HorizontalContentAlignment="Right" />
+                        <Label Width="100"
+                               x:Name="lbCartPrice"
+                               HorizontalContentAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Order History"
+                       HorizontalContentAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="Red" />
+                <Label Content="No Content" HorizontalContentAlignment="Center"/>
+                <ListView x:Name="lvOrders">
+                    
+                </ListView>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

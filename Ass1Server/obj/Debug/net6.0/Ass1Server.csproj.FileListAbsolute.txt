@@ -68,3 +68,14 @@ D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\BusinessObject.dll
 D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\DataAccess.dll
 D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\BusinessObject.pdb
 D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\DataAccess.pdb
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\System.Text.Json.dll
+D:\PRN231\Assignment1\Assignment1\Ass1Server\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

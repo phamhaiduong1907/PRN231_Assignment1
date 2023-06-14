@@ -5,8 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ass1Client.View"
         mc:Ignorable="d"
-        Title="ReportWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="ReportWindow" Width="800">
+    <Grid Background="LightBlue">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Profile"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnProfileNav" />
+                <Button Content="Order"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnOrderNav" />
+                <Button Content="Product"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnProductNav" />
+                <Button Content="Report"
+                        Foreground="White"
+                        Background="Red"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnReportNav" />
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Report"
+                       FontSize="20"
+                       Foreground="Red"
+                       HorizontalContentAlignment="Center"
+                       FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Label Content="Start Date: "/>
+                    <DatePicker x:Name="dpkStartDate" Margin="0,0,50,0"/>
+                    <Label Content="End Date: " />
+                    <DatePicker x:Name="dpkEndDate" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <ListView x:Name="lvOrders">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Email"
+                                            Width="200" />
+                            <GridViewColumn Header="Product Name"
+                                            Width="200" />
+                            <GridViewColumn Header="Shipped Date"
+                                            Width="100"/>
+                            <GridViewColumn Header="Unit Price"
+                                            Width="100" />
+                            <GridViewColumn Header="Quantity"
+                                            Width="100" />
+                            <GridViewColumn Header="Price"
+                                            Width="100" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Total Price: " Width="700"
+                           HorizontalContentAlignment="Right"/>
+                    <Label HorizontalContentAlignment="Center"
+                           Width="100"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

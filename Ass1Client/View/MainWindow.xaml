@@ -34,7 +34,8 @@
                           Checked="CheckBox_Checked"
                           Unchecked="CheckBox_Unchecked"/>
             </StackPanel>
-            <Button Width="70" Height="30" Content="Login"/>
+            <Button Width="70" Height="30" Content="Login"
+                    Click="Button_Click" />
         </StackPanel>
     </Grid>
 </Window>

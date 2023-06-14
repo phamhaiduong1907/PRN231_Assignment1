@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ass1Client.View"
         mc:Ignorable="d"
-        Title="ProductWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="ProductWindow" Width="800">
+    <Grid Background="LightBlue">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Profile"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnProfileNav" />
+                <Button Content="Order"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnOrderNav" />
+                <Button Content="Product"
+                        Foreground="White"
+                        Background="Red"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnProductNav" />
+                <Button Content="Report"
+                        Width="70"
+                        Height="30"
+                        x:Name="btnReportNav" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
