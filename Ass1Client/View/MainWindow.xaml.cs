@@ -1,23 +1,12 @@
-﻿using Ass1Client.View;
+﻿using Ass1Client.Model.Member;
+using Ass1Client.Utilities;
+using Ass1Client.View;
+using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+using System.Configuration;
+using System.IO;
 using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Ass1Client
 {
@@ -26,22 +15,11 @@ namespace Ass1Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        CallAPIUtils util;
         public MainWindow()
         {
             InitializeComponent();
-            //HttpClient client = new HttpClient();
-            //client.BaseAddress = new Uri("http://localhost:5170/");
-            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //HttpResponseMessage resp = client.GetAsync("WeatherForecast").Result;
-            //if (resp.IsSuccessStatusCode)
-            //{
-            //    string content = resp.Content.ReadAsStringAsync().Result;
-            //    MessageBox.Show(content.Substring(0, 20));
-            //}
-            //else
-            //{
-            //    MessageBox.Show("server error");
-            //}
+            util = new CallAPIUtils();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -60,11 +38,61 @@ namespace Ass1Client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string email = tbEmail.Text;
-            string password = pwbPassword.Password.ToString();
-            ProfileWindow profileWindow = new ProfileWindow();
-            profileWindow.Show();
-            this.Hide();
+            try
+            {
+                string email = tbEmail.Text;
+                string passwordOrgin = pwbPassword.Password;
+                string passwordRep = tbPassword.Text;
+                bool isPasswordShown = cbShowPass.IsChecked.HasValue?cbShowPass.IsChecked.Value:false;
+                string password = string.Empty;
+                int role = 0;
+                MemberInfo loginUser = null;
+                var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json",true, true).Build();
+                if (isPasswordShown)
+                {
+                    password = passwordRep;
+                }
+                else
+                {
+                    password = passwordOrgin;
+                }
+
+                if (!config["admin:email"].Equals(email) && !config["admin:password"].Equals(password))
+                {
+                    string json = util.Get($"api/Member/login?username={email}&password={password}");
+                    if (string.IsNullOrEmpty(json))
+                    {
+                        throw new Exception($"Check your email and password again!");
+                    }
+                    else
+                    {
+                        MemberInfo? memberInfo = JsonSerializer.Deserialize<MemberInfo>(json);
+                        if (memberInfo != null)
+                        {
+                            loginUser = memberInfo;
+                            role = 2;
+                        }
+                    }
+                }
+                else
+                {
+                    if (config["admin:email"].Equals(email) && config["admin:password"].Equals(password))
+                    {
+                        role = 1;
+                    }
+                    else
+                    {
+                        throw new Exception($"Check your email and password again!");
+                    }
+                }
+                ProfileWindow profileWindow = new ProfileWindow(role, loginUser);
+                profileWindow.Show();
+                this.Hide();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

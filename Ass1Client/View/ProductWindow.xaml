@@ -28,6 +28,47 @@
                         Height="30"
                         x:Name="btnReportNav" />
             </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Label Content="Product Name" />
+                <TextBox Width="300"/>
+                <Label Content="Category" />
+                <ComboBox />
+                <Label Content="Weight" />
+                <TextBox Width="300" />
+                <Label Content="Unit Price" />
+                <TextBox Width="300" />
+                <Label Content="Unit In Stock" />
+                <TextBox Width="300" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Content="Add" x:Name="btnAdd"
+                        Width="70" Margin="0,5,5,5"/>
+                <Button Content="Update"
+                        x:Name="btnUpdate"
+                        Width="70"
+                        Margin="0,5,5,5" />
+                <Button Content="Delete"
+                        x:Name="btnDelete"
+                        Width="70"
+                        Margin="0,5,5,5" />
+            </StackPanel>
+            <ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Product Name"
+                                        Width="200"/>
+                        <GridViewColumn Header="Category"
+                                        Width="100" />
+                        <GridViewColumn Header="Weight"
+                                        Width="100" />
+                        <GridViewColumn Header="Unit Price"
+                                        Width="100" />
+                        <GridViewColumn Header="Unit In Stock"
+                                        Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
     </Grid>
 </Window>

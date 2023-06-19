@@ -1,7 +1,13 @@
-﻿using BusinessObject.Models;
+﻿using Ass1Server.Models.Member;
+using AutoMapper;
+using BusinessObject.Models;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.Net.Mime;
 
 namespace Ass1Server.Controllers
 {
@@ -9,26 +15,96 @@ namespace Ass1Server.Controllers
     [ApiController]
     public class MemberController : ControllerBase
     {
-        private readonly ILogger<MemberController> _logger;
+        private IMapper _mapper;
         private IMemberRepository _memberRepository;
 
-        public MemberController(ILogger<MemberController> logger, IMemberRepository memberRepository)
+        public MemberController( IMemberRepository memberRepository, IMapper mapper)
         {
-            _logger = logger;
             _memberRepository = memberRepository;
-        }
+            _mapper = mapper;
+        }   
 
         [HttpGet]
-        public async Task<IEnumerable<Member>> GetMembers()
+        [Produces(MediaTypeNames.Application.Json)]
+        public async Task<IEnumerable<MemberInfoDTO>> GetMembers()
         {
-            return await _memberRepository.GetAll();
+            IEnumerable<Member> members = await _memberRepository.GetAll();
+            return _mapper.Map<IEnumerable<MemberInfoDTO>>(members);
         }
 
-        [HttpGet]
-        [Produces("application/json")]
-        public async Task<Member> GetMemberByEmailAndPassword(string username, string password) 
+        [HttpGet("login")]
+        [Produces(MediaTypeNames.Application.Json)]
+        public async Task<ActionResult<MemberInfoDTO>> GetMemberByEmailAndPassword(string username, string password) 
         {
-            return await _memberRepository.GetByEmailAndPassword(username, password);
+            Member member = await _memberRepository.GetByEmailAndPassword(username, password);
+            if(member == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Ok(_mapper.Map<MemberInfoDTO>(member));
+            }
+        }
+
+        [HttpGet("search")]
+        [Produces(MediaTypeNames.Application.Json)]
+        public async Task<ActionResult<IEnumerable<MemberInfoDTO>>> SearchMemberByHint(string search_query)
+        {
+            IEnumerable<Member> members = await _memberRepository.GetByHint(search_query);
+            return _mapper.Map<IEnumerable<MemberInfoDTO>>(members).ToList();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> OnPostAsync([FromBody] MemberInfoDTO member)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest("model is invalid");
+            }
+            try
+            {
+                _memberRepository.Save(_mapper.Map<MemberInfoDTO,Member>(member));
+            }
+            catch
+            {
+                return BadRequest("database exception");
+            }
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> OnPutAsync(int id,[FromBody] MemberInfoDTO member)
+        {
+            if (id != member.MemberId)
+                return BadRequest("id is not consistent");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("model is invalid");
+            }
+            try
+            {
+                _memberRepository.Update(id, _mapper.Map<MemberInfoDTO, Member>(member));
+            }
+            catch
+            {
+                return BadRequest("database exception");
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> OnDeleteAsync(int id)
+        {
+            try
+            {
+                _memberRepository.Delete(id);
+            }
+            catch
+            {
+                return BadRequest("db exception");
+            }
+            return NoContent();
         }
     }
 }

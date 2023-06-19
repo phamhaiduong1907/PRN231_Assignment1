@@ -1,0 +1,15 @@
+D:\PRN231\Assignment1\Assignment1\BusinessObject\bin\Release\net6.0\appsettings.json
+D:\PRN231\Assignment1\Assignment1\BusinessObject\bin\Release\net6.0\BusinessObject.deps.json
+D:\PRN231\Assignment1\Assignment1\BusinessObject\bin\Release\net6.0\BusinessObject.runtimeconfig.json
+D:\PRN231\Assignment1\Assignment1\BusinessObject\bin\Release\net6.0\BusinessObject.dll
+D:\PRN231\Assignment1\Assignment1\BusinessObject\bin\Release\net6.0\BusinessObject.pdb
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.csproj.AssemblyReference.cache
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.GeneratedMSBuildEditorConfig.editorconfig
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.AssemblyInfoInputs.cache
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.AssemblyInfo.cs
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.csproj.CoreCompileInputs.cache
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.dll
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\refint\BusinessObject.dll
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.pdb
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\BusinessObject.genruntimeconfig.cache
+D:\PRN231\Assignment1\Assignment1\BusinessObject\obj\Release\net6.0\ref\BusinessObject.dll
