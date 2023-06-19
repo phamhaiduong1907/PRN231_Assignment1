@@ -43,15 +43,18 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button Content="Add" x:Name="btnAdd"
-                        Width="70" Margin="0,5,5,5"/>
+                        Width="70" Margin="0,5,5,5"
+                        Click="btnAdd_Click" />
                 <Button Content="Update"
                         x:Name="btnUpdate"
                         Width="70"
-                        Margin="0,5,5,5" />
+                        Margin="0,5,5,5"
+                        Click="btnUpdate_Click" />
                 <Button Content="Delete"
                         x:Name="btnDelete"
                         Width="70"
-                        Margin="0,5,5,5" />
+                        Margin="0,5,5,5"
+                        Click="btnDelete_Click" />
             </StackPanel>
             <ListView>
                 <ListView.View>

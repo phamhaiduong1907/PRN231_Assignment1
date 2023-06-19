@@ -50,7 +50,7 @@ namespace DataAccess
                                                 .ToListAsync();
         }
 
-        public async void Delete(int id)
+        public async Task Delete(int id)
         {
             Member member = await _context.Members.FindAsync(id);
             if(member != null)
@@ -64,7 +64,7 @@ namespace DataAccess
             }
         }
 
-        public async void Save(Member member)
+        public async Task Save(Member member)
         {
             var memberToSave = await GetMemberByEmail(member.Email);
             if (memberToSave != null)
@@ -78,7 +78,7 @@ namespace DataAccess
             }
         }
 
-        public async void Update(int id, Member member)
+        public async Task Update(int id, Member member)
         {
             Member memberById = await GetMemberById(id);
             if(memberById != null )

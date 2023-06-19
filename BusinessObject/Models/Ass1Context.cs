@@ -109,10 +109,6 @@ namespace BusinessObject.Models
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Weight)
-                    .HasMaxLength(250)
-                    .IsUnicode(false);
-
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)

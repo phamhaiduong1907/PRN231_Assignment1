@@ -64,7 +64,7 @@ namespace Ass1Server.Controllers
             }
             try
             {
-                _memberRepository.Save(_mapper.Map<MemberInfoDTO,Member>(member));
+                await _memberRepository.Save(_mapper.Map<MemberInfoDTO,Member>(member));
             }
             catch
             {
@@ -84,7 +84,7 @@ namespace Ass1Server.Controllers
             }
             try
             {
-                _memberRepository.Update(id, _mapper.Map<MemberInfoDTO, Member>(member));
+                await _memberRepository.Update(id, _mapper.Map<MemberInfoDTO, Member>(member));
             }
             catch
             {
@@ -98,7 +98,7 @@ namespace Ass1Server.Controllers
         {
             try
             {
-                _memberRepository.Delete(id);
+                await _memberRepository.Delete(id);
             }
             catch
             {
