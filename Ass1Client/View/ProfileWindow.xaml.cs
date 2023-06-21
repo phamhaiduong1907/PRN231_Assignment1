@@ -31,6 +31,17 @@ namespace Ass1Client.View
             lvUsers.ItemsSource = members;
         }
 
+        private void LoadDefaultListData()
+        {
+            string json = util.Get("api/Member");
+            List<MemberInfo> memberInfos = new List<MemberInfo>();
+            if (!string.IsNullOrEmpty(json))
+            {
+                memberInfos = JsonSerializer.Deserialize<List<MemberInfo>>(json);
+            }
+            LoadListData(memberInfos);
+        }
+
         private void LoadStartupData()
         {
             // admin
@@ -68,6 +79,11 @@ namespace Ass1Client.View
                 string result = util.Delete($"api/Member/{id}");
                 if (result == "error")
                     throw new Exception("Error processing the data!");
+                else
+                {
+                    MessageBox.Show("Delete Product Successfully!");
+                    LoadDefaultListData();
+                }
             }
             catch(Exception ex)  
             {
@@ -100,6 +116,11 @@ namespace Ass1Client.View
                 string result = util.Put($"api/Member/{int.Parse(tbMemberId.Text)}",httpContent);
                 if (result == "error")
                     throw new Exception("check your data again");
+                else
+                {
+                    MessageBox.Show("Update Product Successfully!");
+                    LoadDefaultListData();
+                }
             } 
             catch(Exception ex)
             {
@@ -123,13 +144,7 @@ namespace Ass1Client.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string json = util.Get("api/Member");
-            List<MemberInfo> memberInfos = new List<MemberInfo>();
-            if (!string.IsNullOrEmpty(json))
-            {
-                memberInfos = JsonSerializer.Deserialize<List<MemberInfo>>(json);
-            }
-            LoadListData(memberInfos);
+            LoadDefaultListData();
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
@@ -156,6 +171,11 @@ namespace Ass1Client.View
                 string result = util.Post($"api/Member", httpContent);
                 if (result == "error")
                     throw new Exception("check your data again");
+                else
+                {
+                    MessageBox.Show("Add User Successfully!");
+                    LoadDefaultListData();
+                }
             }
             catch (Exception ex)
             {
@@ -169,6 +189,26 @@ namespace Ass1Client.View
             string json = util.Get($"api/Member/search?search_query={search_query}");
             List<MemberInfo> result = JsonSerializer.Deserialize<List<MemberInfo>>(json);
             LoadListData(result);
+        }
+
+        private void btnOrderNav_Click(object sender, RoutedEventArgs e)
+        {
+            OrderWindow window = new OrderWindow();
+            window.Show();
+            this.Close();
+        }
+
+        private void btnProductNav_Click(object sender, RoutedEventArgs e)
+        {
+            ProductWindow window = new ProductWindow();
+            window.Show();
+            this.Close();
+        }
+
+        private void btnReportNav_Click(object sender, RoutedEventArgs e)
+        {
+            new ReportWindow().Show();
+            this.Close();
         }
     }
 }

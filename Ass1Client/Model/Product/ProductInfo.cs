@@ -18,7 +18,7 @@ namespace Ass1Client.Model.Product
         [JsonPropertyName("ProductName")]
         public string ProductName { get; set; }
         [JsonPropertyName("Weight")]
-        public string Weight { get; set; }
+        public double Weight { get; set; }
         [JsonPropertyName("UnitPrice")]
         public double UnitPrice { get; set; }
         [JsonPropertyName("UnitsInStock")]

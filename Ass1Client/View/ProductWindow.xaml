@@ -12,11 +12,13 @@
                 <Button Content="Profile"
                         Width="70"
                         Height="30"
-                        x:Name="btnProfileNav" />
+                        x:Name="btnProfileNav"
+                        Click="btnProfileNav_Click" />
                 <Button Content="Order"
                         Width="70"
                         Height="30"
-                        x:Name="btnOrderNav" />
+                        x:Name="btnOrderNav"
+                        Click="btnOrderNav_Click" />
                 <Button Content="Product"
                         Foreground="White"
                         Background="Red"
@@ -26,49 +28,80 @@
                 <Button Content="Report"
                         Width="70"
                         Height="30"
-                        x:Name="btnReportNav" />
+                        x:Name="btnReportNav"
+                        Click="btnReportNav_Click" />
             </StackPanel>
             <StackPanel HorizontalAlignment="Center">
+                <TextBox Visibility="Collapsed"
+                         x:Name="tbProductId"
+                         Text="{Binding ProductId}"
+                         DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Product Name" />
-                <TextBox Width="300"/>
+                <TextBox Width="300" x:Name="tbProductName"
+                         Height="30"
+                         Text="{Binding ProductName}"
+                         DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Category" />
-                <ComboBox />
+                <ComboBox x:Name="cmbCategories"
+                          Height="30"
+                          SelectedValue="{Binding CategoryId}"
+                          DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Weight" />
-                <TextBox Width="300" />
+                <TextBox Width="300"
+                         x:Name="tbWeight"
+                         Height="30"
+                         Text="{Binding Weight}"
+                         DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Unit Price" />
-                <TextBox Width="300" />
+                <TextBox Width="300"
+                         x:Name="tbUnitPrice"
+                         Height="30"
+                         Text="{Binding UnitPrice}"
+                         DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Unit In Stock" />
-                <TextBox Width="300" />
+                <TextBox Width="300"
+                         x:Name="tbUnitInStock"
+                         Height="30"
+                         Text="{Binding UnitsInStock}"
+                         DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button Content="Add" x:Name="btnAdd"
                         Width="70" Margin="0,5,5,5"
-                        Click="btnAdd_Click" />
+                        Click="btnAdd_Click"
+                        Height="30" />
                 <Button Content="Update"
                         x:Name="btnUpdate"
                         Width="70"
+                        Height="30"
                         Margin="0,5,5,5"
                         Click="btnUpdate_Click" />
                 <Button Content="Delete"
                         x:Name="btnDelete"
                         Width="70"
+                        Height="30"
                         Margin="0,5,5,5"
                         Click="btnDelete_Click" />
             </StackPanel>
-            <ListView>
+            <ListView x:Name="lvProducts">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Product Name"
-                                        Width="200"/>
+                                        Width="200"
+                                        DisplayMemberBinding="{Binding ProductName}"/>
                         <GridViewColumn Header="Category"
-                                        Width="100" />
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding CategoryName}"/>
                         <GridViewColumn Header="Weight"
-                                        Width="100" />
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding Weight}"/>
                         <GridViewColumn Header="Unit Price"
-                                        Width="100" />
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding UnitPrice}"/>
                         <GridViewColumn Header="Unit In Stock"
-                                        Width="100" />
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding UnitsInStock}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace Ass1Server.Models.Product
 {
@@ -6,6 +7,8 @@ namespace Ass1Server.Models.Product
     {
         [JsonPropertyName("ProductId")]
         public int ProductId { get; set; }
+        [JsonPropertyName("CategoryId")]
+        public int CategoryId { get; set; }
         [JsonPropertyName("CategoryName")]
         public string CategoryName { get; set; }
         [JsonPropertyName("ProductName")]

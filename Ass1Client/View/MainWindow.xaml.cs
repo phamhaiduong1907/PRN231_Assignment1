@@ -85,9 +85,11 @@ namespace Ass1Client
                         throw new Exception($"Check your email and password again!");
                     }
                 }
+                PseudoSession.LoginUser = loginUser;
+                PseudoSession.Role = role;
                 ProfileWindow profileWindow = new ProfileWindow(role, loginUser);
                 profileWindow.Show();
-                this.Hide();
+                this.Close();
             }
             catch(Exception ex)
             {

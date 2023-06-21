@@ -96,6 +96,7 @@
                                x:Name="lbCartPrice"
                                HorizontalContentAlignment="Center" />
                     </StackPanel>
+                    
                 </StackPanel>
             </StackPanel>
             <StackPanel>

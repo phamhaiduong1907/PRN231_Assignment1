@@ -13,16 +13,19 @@
                         Foreground="White"
                         Background="Red"
                         Width="70" 
-                        Height="30" x:Name="btnProfileNav"/>
+                        Height="30" x:Name="btnProfileNav" />
                 <Button Content="Order"
                         Width="70"
-                        Height="30" x:Name="btnOrderNav" />
+                        Height="30" x:Name="btnOrderNav"
+                        Click="btnOrderNav_Click" />
                 <Button Content="Product"
                         Width="70"
-                        Height="30" x:Name="btnProductNav" />
+                        Height="30" x:Name="btnProductNav"
+                        Click="btnProductNav_Click" />
                 <Button Content="Report"
                         Width="70"
-                        Height="30" x:Name="btnReportNav" />
+                        Height="30" x:Name="btnReportNav"
+                        Click="btnReportNav_Click" />
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <Label Content="User Profile" Foreground="Red"
