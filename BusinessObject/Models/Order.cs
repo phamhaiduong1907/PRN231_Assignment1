@@ -15,7 +15,7 @@ namespace BusinessObject.Models
         public DateTime OrderDate { get; set; }
         public DateTime RequiredDate { get; set; }
         public DateTime? ShippedDate { get; set; }
-        public double Freight { get; set; }
+        public double? Freight { get; set; }
 
         public virtual Member Member { get; set; } = null!;
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

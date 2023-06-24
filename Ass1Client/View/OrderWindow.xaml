@@ -46,19 +46,25 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Product Name"
-                                            Width="200"/>
+                                            Width="200"
+                                            DisplayMemberBinding="{Binding ProductName}"/>
                             <GridViewColumn Header="Category"
-                                            Width="200" />
+                                            Width="200"
+                                            DisplayMemberBinding="{Binding CategoryName}"/>
                             <GridViewColumn Header="Weight"
-                                            Width="120" />
+                                            Width="120"
+                                            DisplayMemberBinding="{Binding Weight}"/>
                             <GridViewColumn Header="Unit Price"
-                                            Width="120" />
+                                            Width="120"
+                                            DisplayMemberBinding="{Binding UnitPrice}"/>
                             <GridViewColumn Header="Available"
-                                            Width="120"/>
+                                            Width="120"
+                                            DisplayMemberBinding="{Binding UnitsInStock}"/>
                             <GridViewColumn>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Add"/>
+                                        <Button Content="Add"
+                                                Click="btnAddToCart_Click"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -72,19 +78,26 @@
                        FontSize="20"
                        FontWeight="Bold"
                        Foreground="Red" />
-                <Label Content="No content"
-                       HorizontalContentAlignment="Center"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Label Content="Required Date" />
+                    <DatePicker x:Name="dpkRequiredDate"
+                                Width="200" />
+                </StackPanel>
                 <StackPanel Orientation="Vertical">
-                    <ListView x:Name="lvOrderInfos"
+                    <ListView x:Name="lvOrderProducts"
                               Visibility="Visible">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Product Name"
-                                                Width="600" />
+                                                Width="300"
+                                                DisplayMemberBinding="{Binding ProductName}"/>
                                 <GridViewColumn Header="Quantity"
-                                                Width="100" />
+                                                Width="100"
+                                                DisplayMemberBinding="{Binding UnitsInStock}"/>
                                 <GridViewColumn Header="Price"
-                                                Width="100" />
+                                                Width="100"
+                                                DisplayMemberBinding="{Binding UnitPrice}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -96,7 +109,9 @@
                                x:Name="lbCartPrice"
                                HorizontalContentAlignment="Center" />
                     </StackPanel>
-                    
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Confirm Order" Width="100" Height="30"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
             <StackPanel>
@@ -105,7 +120,6 @@
                        FontSize="20"
                        FontWeight="Bold"
                        Foreground="Red" />
-                <Label Content="No Content" HorizontalContentAlignment="Center"/>
                 <ListView x:Name="lvOrders">
                     
                 </ListView>
