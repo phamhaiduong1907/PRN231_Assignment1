@@ -1,11 +1,6 @@
 ﻿using BusinessObject.Models;
 using DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
@@ -38,6 +33,12 @@ namespace DataAccess
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
             return await _context.Products.Include(p => p.Category).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IEnumerable<Product>> GetProductsByName(string name)
+        {
+            name = name.ToLower().Trim();
+            return await _context.Products.Where(p => p.ProductName.Contains(name)).Include(p => p.Category).AsNoTracking().ToListAsync();
         }
 
         public async Task Save(Product product)

@@ -1,19 +1,10 @@
-﻿using Ass1Client.Model.Product;
+﻿using Ass1Client.Model.Order;
+using Ass1Client.Model.Product;
 using Ass1Client.Utilities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Ass1Client.View
 {
@@ -24,48 +15,60 @@ namespace Ass1Client.View
     public partial class OrderWindow : Window
     {
         CallAPIUtils util;
-        static List<ProductInfo> orderedProducts;
+        static List<OrderDetailCreateDTO> orderedDetails;
         public OrderWindow()
         {
             InitializeComponent();
             util = new CallAPIUtils();
-            orderedProducts = new List<ProductInfo>();
+            orderedDetails = new List<OrderDetailCreateDTO>();
+            lvOrderProducts.ItemsSource = orderedDetails;
             LoadDefaultData();
         }
 
-        private void LoadProducts(List<ProductInfo> productInfos)
+        private void LoadProducts(IEnumerable<ProductInfo> productInfos)
         {
             lvProducts.ItemsSource = productInfos;
         }
 
+        private void LoadOrders(IEnumerable<OrderInfoDTO> orderInfos)
+        {
+            lvOrders.ItemsSource = orderInfos;
+        }
+
         private void LoadOrderedProduct()
         {
-            List<ProductInfo> products = new List<ProductInfo>();
-            products.AddRange(orderedProducts);
-            lvOrderProducts.ItemsSource = products;
+            List<OrderDetailCreateDTO> orders = new List<OrderDetailCreateDTO>();
+            orders.AddRange(orderedDetails);
+            lvOrderProducts.ItemsSource = orders;
         }
 
         private void LoadDefaultData()
         {
             string jsonProduct = util.Get("api/Product");
-            if (!string.IsNullOrEmpty(jsonProduct))
+            string jsonOrder = util.Get("api/Order");
+            if (!string.IsNullOrEmpty(jsonProduct) && !string.IsNullOrEmpty(jsonOrder))
             {
+                List<OrderInfoDTO> orderInfoDTOs = JsonSerializer.Deserialize<List<OrderInfoDTO>>(jsonOrder); 
                 List<ProductInfo> productInfos = JsonSerializer.Deserialize<List<ProductInfo>>(jsonProduct);
+                LoadOrders(orderInfoDTOs);
                 LoadProducts(productInfos);
             }
         }
 
         private void btnAddToCart_Click(object sender, RoutedEventArgs e)
         {
+            // Get Information of the selected product
             Button button = (Button) sender;
             ProductInfo selectedProduct = (ProductInfo)button.DataContext;
+
+            // Check if the product has been already added to cart before
             bool isExistedInCart = false;
-            foreach (ProductInfo productInfo in orderedProducts)
+            foreach (var productInfo in orderedDetails)
             {
                 if(productInfo.ProductId == selectedProduct.ProductId)
                 {
-                    productInfo.UnitPrice += selectedProduct.UnitPrice;
-                    productInfo.UnitsInStock++;
+                    productInfo.Price += selectedProduct.UnitPrice;
+                    productInfo.Quantity++;
                     LoadOrderedProduct();
                     isExistedInCart = true;
                     break;
@@ -77,15 +80,40 @@ namespace Ass1Client.View
             }
             if (!isExistedInCart)
             {
-                orderedProducts.Add(new ProductInfo
+                orderedDetails.Add(new OrderDetailCreateDTO
                 {
                     ProductId = selectedProduct.ProductId,
                     ProductName = selectedProduct.ProductName,
-                    UnitPrice = selectedProduct.UnitPrice,
-                    UnitsInStock = 1
+                    Price = selectedProduct.UnitPrice,
+                    Quantity = 1
                 });
                 LoadOrderedProduct();
             }
+        }
+
+        private void btnProductSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string hint = tbProductSearch.Text;
+            string json = util.Get($"api/Product/{hint}");
+            IEnumerable<ProductInfo> products = JsonSerializer.Deserialize<IEnumerable<ProductInfo>>(json);
+            LoadProducts(products);
+        }
+
+        private void btnConfirmOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnViewOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            string jsonProduct = util.Get("api/Product");
+            List<ProductInfo> productInfos = JsonSerializer.Deserialize<List<ProductInfo>>(jsonProduct);
+            LoadProducts(productInfos);
         }
     }
 }

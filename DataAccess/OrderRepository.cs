@@ -1,4 +1,6 @@
-﻿using DataAccess.Repository;
+﻿using BusinessObject.Models;
+using DataAccess.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,74 @@ namespace DataAccess
 {
     public class OrderRepository : IOrderRepository
     {
+        Ass1Context _context;
+        public OrderRepository() 
+        {
+            _context = new Ass1Context();
+        }
+
+        public async Task CreateOrder(Order order)
+        {
+            try
+            {
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                throw new Exception("Can not create order");
+            }
+        }
+
+        public async Task DeleteOrder(int id)
+        {
+            try
+            {
+                Order order = await _context.Orders.FindAsync(id);
+                if (order != null)
+                {
+                    _context.Orders.Remove(order);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    throw new Exception("Can not find order!");
+                }
+            }
+            catch 
+            {
+                throw new Exception("Can not delete order!");
+            }
+        }
+
+        public async Task UpdateOrder(Order order)
+        {
+            try
+            {
+                Order orderToUpdate = await _context.Orders.FindAsync(order.OrderId);
+                if(orderToUpdate != null)
+                {
+                    _context.Orders.Update(orderToUpdate);
+                }
+                else
+                {
+                    throw new Exception("Can not find order!");
+                }
+            }
+            catch
+            {
+                throw new Exception("Can not update order!");
+            }
+        }
+
+        public async Task<IEnumerable<Order>> GetOrders()
+        {
+            return await _context.Orders.Include(o => o.Member).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IEnumerable<Order>> GetOrdersByMemberId(int memberId)
+        {
+            return await _context.Orders.Include(o => o.Member).Where(o => o.MemberId == memberId).AsNoTracking().ToListAsync();
+        }
     }
 }

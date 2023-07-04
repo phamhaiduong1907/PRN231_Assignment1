@@ -32,6 +32,12 @@ namespace Ass1Server.Controllers
             return Ok(_mapper.Map<IEnumerable<CategoryInfoDTO>>(await _repository.GetAllCategories()));
         }
 
+        [HttpGet("{name}")]
+        public async Task<ActionResult<IEnumerable<ProductInfoDTO>>> GetProductsByName(string name)
+        {
+            return Ok(_mapper.Map<IEnumerable<ProductInfoDTO>>(await _repository.GetProductsByName(name)));
+        }
+
         [HttpPost]
         public async Task<IActionResult> OnPostAsync([FromBody] ProductModifyDTO product)
         {

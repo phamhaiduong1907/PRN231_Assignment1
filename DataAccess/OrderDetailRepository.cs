@@ -1,4 +1,5 @@
-﻿using DataAccess.Repository;
+﻿using BusinessObject.Models;
+using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,9 @@ namespace DataAccess
 {
     public class OrderDetailRepository : IOrderDetailRepository
     {
+        public void UpdateOrder(Order order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

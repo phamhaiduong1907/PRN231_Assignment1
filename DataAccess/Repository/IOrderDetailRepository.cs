@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessObject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace DataAccess.Repository
 {
     public interface IOrderDetailRepository
     {
+        void UpdateOrder(Order order);
     }
 }

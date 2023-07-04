@@ -56,13 +56,15 @@
                                             Width="100" />
                             <GridViewColumn Header="Quantity"
                                             Width="100" />
+                            <GridViewColumn Header="Discount"
+                                            Width="100" />
                             <GridViewColumn Header="Price"
                                             Width="100" />
                         </GridView>
                     </ListView.View>
                 </ListView>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Total Price: " Width="700"
+                    <Label Content="Total Cost: " Width="700"
                            HorizontalContentAlignment="Right"/>
                     <Label HorizontalContentAlignment="Center"
                            Width="100"/>

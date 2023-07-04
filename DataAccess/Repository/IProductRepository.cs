@@ -11,6 +11,7 @@ namespace DataAccess.Repository
     {
         Task<IEnumerable<Category>> GetAllCategories();
         Task<IEnumerable<Product>> GetAllProducts();
+        Task<IEnumerable<Product>> GetProductsByName(string name);
         Task Save(Product product);
         Task Update(Product product);
         Task Delete(int id);
