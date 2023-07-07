@@ -1,7 +1,10 @@
 ﻿using Ass1Client.Model.Order;
 using Ass1Client.Model.Product;
 using Ass1Client.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
@@ -101,12 +104,33 @@ namespace Ass1Client.View
 
         private void btnConfirmOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                DateTime requireddate = dpkRequiredDate.SelectedDate.HasValue ?
+                dpkRequiredDate.SelectedDate.Value : throw new Exception("You have to choose required date");
+                OrderCreateDTO orderCreateDTO = new OrderCreateDTO
+                {
+                    RequiredDate = requireddate,
+                    OrderDate = DateTime.Now,
+                    MemberId = PseudoSession.LoginUser.MemberId,
+                    OrderDetails = orderedDetails
+                };
+                string json = JsonSerializer.Serialize<OrderCreateDTO>(orderCreateDTO);
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                util.Post("api/Order", httpContent);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnViewOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = (Button)sender;
+            OrderInfoDTO selectedOrder = (OrderInfoDTO)button.DataContext;
+            OrderDetailWindow window = new OrderDetailWindow(selectedOrder.OrderId);
+            window.ShowDialog();
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)

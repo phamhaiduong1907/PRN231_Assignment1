@@ -15,35 +15,84 @@
                    HorizontalContentAlignment="Center"/>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <Label Content="Order Date" Width="300"/>
-                <DatePicker Height="30"/>
+                <DatePicker Height="30"
+                            x:Name="dpkOrderDate"
+                            IsEnabled="False"/>
                 <Label Content="Required Date"
                        Width="300" />
-                <DatePicker Height="30" />
+                <DatePicker Height="30"
+                            x:Name="dpkRequiredDate"/>
                 <Label Content="Shipped Date"
                        Width="300" />
-                <DatePicker Height="30" />
+                <DatePicker Height="30" x:Name="dpkShippedDate"/>
                 <Label Content="Freight"
                        Width="300" />
-                <TextBox Height="30" />
+                <TextBox Height="30" x:Name="tbFreight" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button Content="Save" 
+                            Height="30" Width="50"
+                            Margin="10"
+                            x:Name="btnUpdateOrder"
+                            Click="btnUpdateOrder_Click" />
+                    <Button Content="Delete"
+                            Height="30"
+                            Width="50"
+                            Margin="10"
+                            x:Name="btnDeleteOrder"
+                            Click="btnDeleteOrder_Click" />
+                </StackPanel>
             </StackPanel>
-            <ListView x:Name="lvOrderDetails">
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center">
+                <Label Content="ProductName" Width="300"/>
+                <TextBox IsReadOnly="True" Height="30"
+                         x:Name="tbProductName"/>
+                <Label Content="Quantity"/>
+                <TextBox Height="30" x:Name="tbQuantity"/>
+                <Label Content="Discount"/>
+                <TextBox Height="30" x:Name="tbDiscount"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button Content="Update"
+                            Height="30"
+                            Width="70"
+                            Margin="10"
+                            x:Name="btnUpdateDetail"
+                            Click="btnUpdateDetail_Click" />
+                    <Button Content="Delete"
+                            Height="30"
+                            Width="70"
+                            Margin="10"
+                            x:Name="btnDeleteDetail"
+                            Click="btnDeleteDetail_Click" />
+                </StackPanel>
+            </StackPanel>
+            <ListView x:Name="lvOrderDetails"
+                      Height="200">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Product Name"
-                                        Width="200"/>
+                                        Width="200"
+                                        DisplayMemberBinding="{Binding ProductName}"/>
                         <GridViewColumn Header="Quantity"
-                                        Width="100"/>
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding Quantity}"/>
                         <GridViewColumn Header="Discount"
-                                        Width="100"/>
-                        <GridViewColumn Header="Discount"
-                                        Width="100"/>
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding Discount}"/>
+                        <GridViewColumn Header="Price"
+                                        Width="100"
+                                        DisplayMemberBinding="{Binding Price}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Total:" Foreground="Red"
                        FontSize="20" FontWeight="Bold"/>
-                <Label x:Name="lblOrderValue" />
+                <Label x:Name="lblOrderValue"
+                       FontSize="20"
+                       FontWeight="Bold" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -12,21 +12,25 @@
                 <Button Content="Profile"
                         Width="70"
                         Height="30"
-                        x:Name="btnProfileNav" />
+                        x:Name="btnProfileNav"
+                        Click="btnProfileNav_Click" />
                 <Button Content="Order"
                         Width="70"
                         Height="30"
-                        x:Name="btnOrderNav" />
+                        x:Name="btnOrderNav"
+                        Click="btnOrderNav_Click" />
                 <Button Content="Product"
                         Width="70"
                         Height="30"
-                        x:Name="btnProductNav" />
+                        x:Name="btnProductNav"
+                        Click="btnProductNav_Click" />
                 <Button Content="Report"
                         Foreground="White"
                         Background="Red"
                         Width="70"
                         Height="30"
-                        x:Name="btnReportNav" />
+                        x:Name="btnReportNav"
+                        Click="btnReportNav_Click" />
             </StackPanel>
             <StackPanel>
                 <Label Content="Report"
@@ -39,7 +43,9 @@
                     <Label Content="Start Date: "/>
                     <DatePicker x:Name="dpkStartDate" Margin="0,0,50,0"/>
                     <Label Content="End Date: " />
-                    <DatePicker x:Name="dpkEndDate" />
+                    <DatePicker x:Name="dpkEndDate"
+                                Margin="0,0,50,0" />
+                    <Button Content="Report" Width="70" Height="30"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel>
@@ -47,19 +53,20 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Email"
-                                            Width="200" />
-                            <GridViewColumn Header="Product Name"
-                                            Width="200" />
+                                            Width="200"
+                                            DisplayMemberBinding="{Binding Email}"/>
                             <GridViewColumn Header="Shipped Date"
-                                            Width="100"/>
-                            <GridViewColumn Header="Unit Price"
-                                            Width="100" />
-                            <GridViewColumn Header="Quantity"
-                                            Width="100" />
-                            <GridViewColumn Header="Discount"
-                                            Width="100" />
+                                            Width="100"
+                                            DisplayMemberBinding="{Binding ShippedDate, StringFormat='{}{0:yyyy/MM/dd}'}"/>
+                            <GridViewColumn Header="Freight"
+                                            Width="100"
+                                            DisplayMemberBinding="{Binding Freight}"/>
+                            <GridViewColumn Header="Total Discount"
+                                            Width="100"
+                                            DisplayMemberBinding="{Binding Discount}"/>
                             <GridViewColumn Header="Price"
-                                            Width="100" />
+                                            Width="100"
+                                            DisplayMemberBinding="{Binding Price}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -67,7 +74,8 @@
                     <Label Content="Total Cost: " Width="700"
                            HorizontalContentAlignment="Right"/>
                     <Label HorizontalContentAlignment="Center"
-                           Width="100"/>
+                           Width="100"
+                           x:Name="lblTotalCost"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

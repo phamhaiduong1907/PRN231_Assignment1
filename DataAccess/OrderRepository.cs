@@ -80,5 +80,31 @@ namespace DataAccess
         {
             return await _context.Orders.Include(o => o.Member).Where(o => o.MemberId == memberId).AsNoTracking().ToListAsync();
         }
+
+        public async Task<Order> GetOrderById(int orderId)
+        {
+            List<OrderDetail> orderDetails = await _context.OrderDetails.Where(od => od.OrderId == orderId).Include(od => od.Product).AsNoTracking().ToListAsync();
+            Order order = await _context.Orders.Include(o => o.Member).Where(o => o.OrderId ==  orderId).AsNoTracking().FirstOrDefaultAsync();
+            if(order != null)
+            {
+                order.OrderDetails = orderDetails;
+            }
+            return order;
+        }
+
+        public async Task<IEnumerable<Order>> GetOrdersWithDetail(DateTime? startDate, DateTime? endDate)
+        {
+            List<Order> orders = await _context.Orders.Include(o => o.OrderDetails)
+                .ThenInclude(o => o.Product)
+                .Include( o => o.Member)
+                .Where(o => o.ShippedDate.HasValue)
+                .AsNoTracking()
+                .ToListAsync();
+            if(startDate != null && endDate != null)
+            {
+                orders = orders.Where(o => o.OrderDate >= startDate && o.OrderDate <= endDate).ToList();
+            }
+            return orders;
+        }
     }
 }

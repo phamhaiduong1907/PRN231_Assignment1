@@ -11,6 +11,8 @@ namespace DataAccess.Repository
     {
         Task<IEnumerable<Order>> GetOrders();
         Task<IEnumerable<Order>> GetOrdersByMemberId(int memberId);
+        Task<Order> GetOrderById(int orderId);
+        Task<IEnumerable<Order>> GetOrdersWithDetail(DateTime? startDate, DateTime? endDate);
         Task CreateOrder(Order order);
         Task UpdateOrder(Order order);
         Task DeleteOrder(int id);

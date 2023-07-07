@@ -7,16 +7,12 @@ namespace Ass1Client.Model.Order
     {
         [JsonPropertyName("Email")]
         public string Email { get; set; }
-        [JsonPropertyName("ProductName")]
-        public string ProductName { get; set; }
         [JsonPropertyName("ShippedDate")]
-        public DateTime ShippedDate { get; set; }
-        [JsonPropertyName("UnitPrice")]
-        public double UnitPrice { get; set; }
-        [JsonPropertyName("Quantity")]
-        public int Quantity { get; set; }
+        public DateTime? ShippedDate { get; set; }
+        [JsonPropertyName("Freight")]
+        public double? Freight { get; set; }
         [JsonPropertyName("Discount")]
-        public double Discount { get; set; }
+        public double? Discount { get; set; } = 0;
         [JsonPropertyName("Price")]
         public double Price { get; set; }
     }

@@ -9,8 +9,6 @@ namespace Ass1Client.Model.Order
 {
     public class OrderDetailCreateDTO
     {
-        [JsonPropertyName("OrderId")]
-        public int OrderId { get; set; }
         [JsonPropertyName("ProductId")]
         public int ProductId { get; set; }
         [JsonPropertyName("Quantity")]

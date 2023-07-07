@@ -197,7 +197,7 @@ namespace Ass1Client.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Ass1Client;component/view/profilewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Ass1Client;V1.0.0.0;component/view/profilewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\ProfileWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
