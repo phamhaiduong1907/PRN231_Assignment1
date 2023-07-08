@@ -28,9 +28,11 @@
                         Click="btnReportNav_Click" />
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <Label Content="User Profile" Foreground="Red"
-                       FontWeight="Bold" FontSize="25"
-                       HorizontalContentAlignment="Center"/>
+                <Label Content="User Profile"
+                       Foreground="Red"
+                       FontWeight="Bold"
+                       FontSize="25"
+                       HorizontalContentAlignment="Center" />
                 <TextBox x:Name="tbMemberId" Visibility="Collapsed"
                          Text="{Binding MemberId}"
                          DataContext="{Binding Source={x:Reference lvUsers}, Path=SelectedItem}"/>
@@ -94,7 +96,7 @@
                             Click="btnDelete_Click" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel>
+            <StackPanel x:Name="panelSearch">
                 <StackPanel Orientation="Horizontal"
                             Margin="0,10,0,10"
                             HorizontalAlignment="Center">

@@ -11,6 +11,7 @@ namespace Ass1Server.Configurations
             CreateMap<Order, OrderInfoDTO>()
                 .ForMember(des => des.Email, act => act.MapFrom(src => src.Member.Email));
             CreateMap<OrderCreateDTO, Order>();
+            CreateMap<OrderUpdateDTO, Order>();
         }
     }
 }

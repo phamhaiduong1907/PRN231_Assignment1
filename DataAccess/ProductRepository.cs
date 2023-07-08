@@ -52,7 +52,12 @@ namespace DataAccess
             Product productToUpdate = await _context.Products.FindAsync(product.ProductId);
             if(productToUpdate != null)
             {
-                _context.Entry(product).State = EntityState.Modified;
+                productToUpdate.UnitPrice = product.UnitPrice;
+                productToUpdate.ProductName = product.ProductName;
+                productToUpdate.Weight = product.Weight;
+                productToUpdate.UnitsInStock = product.UnitsInStock;
+                productToUpdate.CategoryId = product.CategoryId;
+                _context.Products.Update(productToUpdate);
                 await _context.SaveChangesAsync();
             }
             else 

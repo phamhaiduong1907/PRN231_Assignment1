@@ -111,7 +111,7 @@ namespace Ass1Client.View
             string response = util.Delete($"api/Product/{int.Parse(tbProductId.Text)}");
             if (response == "error")
             {
-                MessageBox.Show("Please check your input!");
+                MessageBox.Show("Can not delete product!");
             }
             else
             {

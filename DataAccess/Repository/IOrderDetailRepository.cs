@@ -9,6 +9,7 @@ namespace DataAccess.Repository
 {
     public interface IOrderDetailRepository
     {
-        void UpdateOrder(Order order);
+        Task UpdateOrderDetail(OrderDetail orderDetail);
+        Task DeleteOrderDetail(int orderId, int productId);
     }
 }

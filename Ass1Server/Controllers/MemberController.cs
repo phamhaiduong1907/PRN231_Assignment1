@@ -86,9 +86,9 @@ namespace Ass1Server.Controllers
             {
                 await _memberRepository.Update(id, _mapper.Map<MemberInfoDTO, Member>(member));
             }
-            catch
+            catch(Exception ex)
             {
-                return BadRequest("database exception");
+                return BadRequest(ex.Message);
             }
             return NoContent();
         }

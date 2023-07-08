@@ -16,5 +16,7 @@ namespace DataAccess.Repository
         Task CreateOrder(Order order);
         Task UpdateOrder(Order order);
         Task DeleteOrder(int id);
+        Task UpdateOrderDetail(OrderDetail orderDetail);
+        Task DeleteOrderDetail(int orderId, int productId);
     }
 }

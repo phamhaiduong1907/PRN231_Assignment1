@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ass1Client.View"
         mc:Ignorable="d"
         Title="ReportWindow" Width="800">
     <Grid Background="LightBlue">
@@ -29,8 +28,7 @@
                         Background="Red"
                         Width="70"
                         Height="30"
-                        x:Name="btnReportNav"
-                        Click="btnReportNav_Click" />
+                        x:Name="btnReportNav" />
             </StackPanel>
             <StackPanel>
                 <Label Content="Report"

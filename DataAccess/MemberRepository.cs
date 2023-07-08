@@ -83,20 +83,24 @@ namespace DataAccess
             Member memberById = await GetMemberById(id);
             if(memberById != null )
             {
-                Member memberByEmail = await GetMemberByEmail(member.Email);
+                Member memberByEmail = await _context.Members.Where(m => m.Email == member.Email && m.MemberId != id).FirstOrDefaultAsync();
                 if(memberByEmail == null)
                 {
-                    _context.Entry(member).State = EntityState.Modified;
+                    memberById.Email = member.Email;
+                    memberById.City = member.City;
+                    memberById.Country = member.Country;
+                    memberById.CompanyName = member.CompanyName;
+                    _context.Members.Update(memberById);
                     await _context.SaveChangesAsync();
                 }
                 else
                 {
-                    throw new Exception();
+                    throw new Exception("Save failed");
                 }
             } 
             else 
             { 
-                throw new Exception(); 
+                throw new Exception("Cannot find member"); 
             }
         }
     }

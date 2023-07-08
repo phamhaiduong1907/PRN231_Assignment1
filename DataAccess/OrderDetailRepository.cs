@@ -10,7 +10,12 @@ namespace DataAccess
 {
     public class OrderDetailRepository : IOrderDetailRepository
     {
-        public void UpdateOrder(Order order)
+        public Task DeleteOrderDetail(int orderId, int productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateOrderDetail(OrderDetail orderDetail)
         {
             throw new NotImplementedException();
         }

@@ -13,7 +13,8 @@
                 <Button Content="Profile"
                         Width="70"
                         Height="30"
-                        x:Name="btnProfileNav" />
+                        x:Name="btnProfileNav"
+                        Click="btnProfileNav_Click" />
                 <Button Content="Order"
                         Foreground="White"
                         Background="Red"
@@ -23,13 +24,16 @@
                 <Button Content="Product"
                         Width="70"
                         Height="30"
-                        x:Name="btnProductNav" />
+                        x:Name="btnProductNav"
+                        Click="btnProductNav_Click" />
                 <Button Content="Report"
                         Width="70"
                         Height="30"
-                        x:Name="btnReportNav" />
+                        x:Name="btnReportNav"
+                        Click="btnReportNav_Click" />
             </StackPanel>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical"
+                        x:Name="panelCreateOrder">
                 <StackPanel Orientation="Vertical">
                     <Label Content="Product Available"
                            HorizontalContentAlignment="Center"
@@ -72,11 +76,13 @@
                                 <GridViewColumn Header="Available"
                                                 Width="120"
                                                 DisplayMemberBinding="{Binding UnitsInStock}" />
-                                <GridViewColumn>
+                                <GridViewColumn Width="70">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Button Content="Add"
-                                                    Click="btnAddToCart_Click" />
+                                                    Click="btnAddToCart_Click"
+                                                    Height="30"
+                                                    Width="50"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

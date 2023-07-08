@@ -25,6 +25,15 @@ namespace Ass1Client.View
             util = new CallAPIUtils();
             orderedDetails = new List<OrderDetailCreateDTO>();
             lvOrderProducts.ItemsSource = orderedDetails;
+            if(PseudoSession.Role == 1)
+            {
+                panelCreateOrder.Visibility = Visibility.Collapsed;
+            }
+            if(PseudoSession.Role == 2)
+            {
+                btnReportNav.Visibility = Visibility.Collapsed;
+                btnProductNav.Visibility = Visibility.Collapsed;
+            }
             LoadDefaultData();
         }
 
@@ -48,7 +57,15 @@ namespace Ass1Client.View
         private void LoadDefaultData()
         {
             string jsonProduct = util.Get("api/Product");
-            string jsonOrder = util.Get("api/Order");
+            string jsonOrder = string.Empty;
+            if (PseudoSession.Role == 1)
+            {
+                jsonOrder = util.Get("api/Order");
+            }
+            else
+            {
+                jsonOrder = util.Get($"api/Order/{PseudoSession.LoginUser.MemberId}/orders");
+            }
             if (!string.IsNullOrEmpty(jsonProduct) && !string.IsNullOrEmpty(jsonOrder))
             {
                 List<OrderInfoDTO> orderInfoDTOs = JsonSerializer.Deserialize<List<OrderInfoDTO>>(jsonOrder); 
@@ -130,7 +147,8 @@ namespace Ass1Client.View
             Button button = (Button)sender;
             OrderInfoDTO selectedOrder = (OrderInfoDTO)button.DataContext;
             OrderDetailWindow window = new OrderDetailWindow(selectedOrder.OrderId);
-            window.ShowDialog();
+            window.Show();
+            this.Close();
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -138,6 +156,27 @@ namespace Ass1Client.View
             string jsonProduct = util.Get("api/Product");
             List<ProductInfo> productInfos = JsonSerializer.Deserialize<List<ProductInfo>>(jsonProduct);
             LoadProducts(productInfos);
+        }
+
+        private void btnProfileNav_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow window = new ProfileWindow(PseudoSession.Role, PseudoSession.LoginUser);
+            this.Close();
+            window.Show();
+        }
+
+        private void btnProductNav_Click(object sender, RoutedEventArgs e)
+        {
+            ProductWindow window = new ProductWindow();
+            this.Close();
+            window.Show();
+        }
+
+        private void btnReportNav_Click(object sender, RoutedEventArgs e)
+        {
+            ReportWindow window = new ReportWindow();
+            this.Close();
+            window.Show();
         }
     }
 }

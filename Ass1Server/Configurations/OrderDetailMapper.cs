@@ -9,6 +9,7 @@ namespace Ass1Server.Configurations
         public OrderDetailMapper() 
         {
             CreateMap<OrderDetailCreateDTO, OrderDetail>();
+            CreateMap<OrderDetailUpdateDTO, OrderDetail>();
         }
     }
 }

@@ -110,14 +110,34 @@ namespace Ass1Server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> OnPutAsync(int id)
+        public async Task<IActionResult> OnPutAsync(int id, OrderUpdateDTO order)
         {
+            if(id != order.OrderId)
+            {
+                return BadRequest();
+            }
+            await _repository.UpdateOrder(_mapper.Map<Order>(order));
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> OnDeleteAsync(int id)
         {
+            await _repository.DeleteOrder(id);
+            return NoContent();
+        }
+
+        [HttpPut("detail")]
+        public async Task<IActionResult> OnPutDetailAsync(OrderDetailUpdateDTO orderDetail)
+        {
+            await _repository.UpdateOrderDetail(_mapper.Map<OrderDetail>(orderDetail));
+            return NoContent();
+        }
+
+        [HttpDelete("detail/{orderId}/{productId}")]
+        public async Task<IActionResult> OnDeleteDetailAsync(int orderId, int productId)
+        {
+            await _repository.DeleteOrderDetail(orderId, productId);
             return NoContent();
         }
     }

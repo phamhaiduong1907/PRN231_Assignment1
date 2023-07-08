@@ -21,7 +21,7 @@ namespace Ass1Server.Models.Member
         public string Country { get; set; }
         [JsonPropertyName("Password")]
         [Required]
-        [MinLength(8, ErrorMessage = "Password must be at least 8 characters")]
+        [MinLength(6, ErrorMessage = "Password must be at least 8 characters")]
         public string Password { get; set; }
     }
 }
