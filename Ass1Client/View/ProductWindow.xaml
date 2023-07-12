@@ -34,35 +34,35 @@
             <StackPanel HorizontalAlignment="Center">
                 <TextBox Visibility="Collapsed"
                          x:Name="tbProductId"
-                         Text="{Binding ProductId}"
+                         Text="{Binding ProductId, Mode=OneWay}"
                          DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Product Name" />
                 <TextBox Width="300" x:Name="tbProductName"
                          Height="30"
-                         Text="{Binding ProductName}"
+                         Text="{Binding ProductName, Mode=OneWay}"
                          DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Category" />
                 <ComboBox x:Name="cmbCategories"
                           Height="30"
-                          SelectedValue="{Binding CategoryId}"
+                          SelectedValue="{Binding CategoryId, Mode=OneWay}"
                           DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Weight" />
                 <TextBox Width="300"
                          x:Name="tbWeight"
                          Height="30"
-                         Text="{Binding Weight}"
+                         Text="{Binding Weight, Mode=OneWay}"
                          DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Unit Price" />
                 <TextBox Width="300"
                          x:Name="tbUnitPrice"
                          Height="30"
-                         Text="{Binding UnitPrice}"
+                         Text="{Binding UnitPrice, Mode=OneWay}"
                          DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
                 <Label Content="Unit In Stock" />
                 <TextBox Width="300"
                          x:Name="tbUnitInStock"
                          Height="30"
-                         Text="{Binding UnitsInStock}"
+                         Text="{Binding UnitsInStock, Mode=OneWay}"
                          DataContext="{Binding Source={x:Reference lvProducts}, Path=SelectedItem}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"

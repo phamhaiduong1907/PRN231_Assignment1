@@ -53,5 +53,31 @@ namespace Ass1Client.View
             window.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? startDate = dpkStartDate.SelectedDate;
+            DateTime? endDate = dpkEndDate.SelectedDate;
+            if(startDate.HasValue && endDate.HasValue)
+            {
+
+                string json = util.Get($"api/Order/report?startDate={startDate.Value.ToString("yyyy-MM-dd")}&endDate={endDate.Value.ToString("yyyy-MM-dd")}");
+                IEnumerable<OrderReportDTO> orders = JsonSerializer.Deserialize<IEnumerable<OrderReportDTO>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                lvOrders.ItemsSource = orders;
+                lblTotalCost.Content = $"{orders.Sum(o => o.Price)}";
+            }
+            else
+            {
+                MessageBox.Show("Input both start date and end date!");
+            }
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            string json = util.Get($"api/Order/report");
+            IEnumerable<OrderReportDTO> orders = JsonSerializer.Deserialize<IEnumerable<OrderReportDTO>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            lvOrders.ItemsSource = orders;
+            lblTotalCost.Content = $"{orders.Sum(o => o.Price)}";
+        }
     }
 }
